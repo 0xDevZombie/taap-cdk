@@ -1,7 +1,7 @@
 import boto3
 import os
 from web3 import Web3
-from web3.middleware import geth_poa_middleware
+# from web3.middleware import geth_poa_middleware
 import json
 import requests
 from botocore.exceptions import ClientError
@@ -64,9 +64,9 @@ def handle(event, context):
 
     data = open('ABI.JSON')
     contract = json.load(data)
-    myContract = web3.eth.contract(address="0x4F640361e45E0020e2946FCD876C3b873a556317", abi=contract['abi'])
+    myContract = web3.eth.contract(address="0xfc9ab31a5eaa41b22f59c83de71f024e10a62ec0", abi=contract['abi'])
 
-    web3.middleware_onion.inject(geth_poa_middleware, layer=0)
+    # web3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
     from_block = getItem()
 
@@ -91,8 +91,8 @@ def handle(event, context):
                 if discord_auth_bot[:3].lower() != 'bot':
                     return gen_status(401, 'DISCORD AUTH BOT NOT SET')
 
-                guild_id = 994197138802229258
-                role_id = 994319465317670933
+                guild_id = 898493032956055553
+                role_id = 1000775589810143272
                 r = requests.put(
                     f"https://discord.com/api/v9/guilds/{guild_id}/members/{user['member_id']}/roles/{role_id}",
                     headers={'Authorization': discord_auth_bot})
