@@ -14,10 +14,13 @@ discord_users = dynamodb.Table(os.environ['DISCORD_USERS_TABLE_NAME'])
 def gen_status(status_code, body):
     return {
         'statusCode': status_code,
-        'headers': {
-            'Content-Type': 'text/plain'
+        "headers": {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST"
         },
-        'body': body
+        "body": json.dumps({'msg': body}),
     }
 
 
