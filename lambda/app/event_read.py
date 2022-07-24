@@ -64,7 +64,7 @@ def handle(event, context):
 
     data = open('ABI.JSON')
     contract = json.load(data)
-    myContract = web3.eth.contract(address="0xfc9ab31a5eaa41b22f59c83de71f024e10a62ec0", abi=contract['abi'])
+    myContract = web3.eth.contract(address="0x6743E037C176CAA49d495a3169F40779a8Dc1a8C", abi=contract['abi'])
 
     # web3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
