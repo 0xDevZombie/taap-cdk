@@ -59,7 +59,7 @@ tool_users = ToolsUsers(dynamodb, tools_users_table)
 
 
 def handle(event, context):
-    address = event["queryStringParameters"]['address']
+    address = event["queryStringParameters"]['address'].lower()
     to_return = {'address': address}
 
     item_token_two = tool_users.get_item(address, 2)

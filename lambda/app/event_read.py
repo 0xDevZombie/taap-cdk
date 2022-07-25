@@ -79,7 +79,7 @@ def handle(event, context):
                                                                    toBlock=latest_block)
     for tx in transfer_filter.get_all_entries():
         expires = datetime.fromtimestamp(tx['args']['timestamp']) + timedelta(days=14)
-        item = {'address': tx['args']['user'], 'burn_timestamp': tx['args']['timestamp'],
+        item = {'address': tx['args']['user'].lower(), 'burn_timestamp': tx['args']['timestamp'],
                 'token_id': tx['args']['tokenId'], 'expires_timestamp': expires.strftime('%s')}
 
 
